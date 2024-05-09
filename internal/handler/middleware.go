@@ -17,7 +17,5 @@ func (h *ClientHandler) IsAuthMiddleware(c *gin.Context) {
 		return
 	}
 
-	h.log.Info("user is authorized")
-
 	c.Next()
 }

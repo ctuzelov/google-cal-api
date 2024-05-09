@@ -29,7 +29,6 @@ func SaveToken(token string) error {
 	if err != nil {
 		return err
 	}
-
 	return os.WriteFile(cur+tokenFile, []byte(token), 0644)
 }
 
@@ -56,18 +55,18 @@ func LoadToken() (string, error) {
 	return string(tokenB), nil
 }
 
-func MustDeleteToken() {
-	err := DeleteToken()
+func MustChangeToken() {
+	err := ChangeToken()
 	if err != nil {
 		panic(err)
 	}
 }
 
-func DeleteToken() error {
+func ChangeToken() error {
 	cur, err := os.Getwd()
 	if err != nil {
 		return err
 	}
 
-	return os.Remove(cur + tokenFile)
+	return os.WriteFile(cur+tokenFile, []byte(""), 0644)
 }

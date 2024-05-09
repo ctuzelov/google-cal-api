@@ -43,5 +43,5 @@ func (h *ClientHandler) SetToken(c *gin.Context) {
 }
 
 func (h *ClientHandler) Logout(c *gin.Context) {
-	MustDeleteToken()
+	MustChangeToken()
 }

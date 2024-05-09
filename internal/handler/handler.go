@@ -26,8 +26,9 @@ func New(config *oauth2.Config, logger *slog.Logger) *ClientHandler {
 func (h *ClientHandler) InitRoutes() *gin.Engine {
 	router := gin.Default()
 
+	router.GET("/ping")
 	router.GET("/token", h.SetToken)
-	router.GET("/ping", h.AuthLink)
+	router.GET("/auth", h.AuthLink)
 
 	router.GET("/event/all", h.IsAuthMiddleware, h.GetEvents)
 	router.GET("/event/:id", h.IsAuthMiddleware, h.GetEvent)

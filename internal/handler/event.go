@@ -172,7 +172,7 @@ func (h *ClientHandler) GetFirstZoomMeeting(c *gin.Context) {
 			re := regexp.MustCompile(`https://[^"]+`)
 			link := re.FindString(item.Description)
 
-			err := exec.Command("cmd", "/c", "start", link).Run()
+			err := exec.Command("xdg-open", link).Run()
 			if err != nil {
 				h.log.Error("failed to start zoom", err)
 				c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch events from Google Calendar"})
